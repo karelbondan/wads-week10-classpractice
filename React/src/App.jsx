@@ -7,6 +7,7 @@ import "./App.css";
 import { useState } from "react";
 import { signOut } from "firebase/auth";
 import { Auth } from "./firebase-config";
+import Test from "./pages/Test";
 
 const App = () => {
   const [isAuth, setIsAuth] = useState(false);
@@ -17,7 +18,7 @@ const App = () => {
   }
   return (
     <Router>
-        <nav>
+        <nav className="navbar">
             <Link to="/">Home</Link>
             <Link to="/createpost">Post</Link>
             {!isAuth ? <Link to="/login">Login</Link> : <button onClick={SignUserOut}>Logout</button>}
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/createpost" element={<CreatePost />} />
             <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+            <Route path="/test" element={<Test />}/>
         </Routes>
     </Router>
   );
